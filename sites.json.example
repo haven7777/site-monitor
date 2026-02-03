@@ -1,0 +1,7 @@
+cat > sites.json.example << 'EOF'
+[
+  "https://google.com",
+  "https://github.com",
+  "https://example.com"
+]
+EOF
