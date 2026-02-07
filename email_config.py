@@ -1,13 +1,18 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # ===== EMAIL CONFIG =====
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-SENDER_EMAIL = "benbenben12322@gmail.com"  # Replace with your Gmail
-SENDER_PASSWORD = "ypgu gniy mvpt yozt"  # Replace with the 16-char app password
-RECIPIENT_EMAIL = "ifatpil22@gmail.com"  # Where to send alerts
+SENDER_EMAIL = os.getenv('SENDER_EMAIL')
+SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')
+RECIPIENT_EMAIL = os.getenv('RECIPIENT_EMAIL')
 
 def send_email_alert(subject, body):
     """Send email alert"""
@@ -206,6 +211,10 @@ def format_email_alert(url, status_code=None, error=None, stats=None):
                 </div>
             </div>
         </body>
+        </html>
+        """
+    
+    return subject, body
         </html>
         """
     
